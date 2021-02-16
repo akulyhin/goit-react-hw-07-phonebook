@@ -21,7 +21,7 @@ const ContactForm = ({ contacts, addTask }) => {
     e.preventDefault();
     if (
       contacts.some(
-        (item) => item.name.toLowerCase() === state.name.toLowerCase()
+        (item) => item.items.name.toLowerCase() === state.name.toLowerCase()
       )
     ) {
       setState((prev) => ({ ...prev, alert: true }));

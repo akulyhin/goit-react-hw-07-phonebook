@@ -6,15 +6,16 @@ import styles from "./ContactList.module.css";
 import contactItem from "../Animation/contactItem.module.css";
 import { removeTask } from "../../redux/actions/todoActions";
 
-function Contacts({ contacts, removeTask }) {
+function Contacts({ contacts, removeTask,  }) {
+
   return (
     <>
       <h2>Contacts</h2>
       <TransitionGroup component="ul" className={styles.contactList}>
-        {contacts.map(({ id, name, number }) => (
+        {contacts.map(({ id, items }) => (
           <CSSTransition key={id} classNames={contactItem} timeout={250}>
             <li className={styles.contactItem}>
-              <span>{name}</span> <span>{number} </span>
+              <span>{items.name}</span> <span>{items.number} </span>
               <button
                 className={styles.btnClose}
                 type="button"
@@ -31,10 +32,9 @@ function Contacts({ contacts, removeTask }) {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("state", state.contacts);
   return {
     contacts: state.contacts.items.filter((item) =>
-      item.name.toLowerCase().includes(state.contacts.filter.toLowerCase())
+      item.items.name.toLowerCase().includes(state.contacts.filter.toLowerCase())
     ),
   };
 };
