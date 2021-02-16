@@ -1,6 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { removeTask, setFilter, addTaskRequest, addTaskSuccess, addTaskError, fetchTasksRequest, fetchTasksSuccess, fetchTasksError, removeTasksRequest, removeTasksSuccess, removeTasksError } from "../actions/todoActions";
+import {
+  removeTask,
+  setFilter,
+  addTaskSuccess,
+  fetchTasksSuccess,
+  removeTasksSuccess,
+} from "../actions/todoActions";
 
 const initialState = [
   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
@@ -14,8 +20,6 @@ const onAddTask = (state, action) => [
   { ...action.payload, ...action.payload.items },
 ];
 
-
-
 const onDeleteTask = (state, action) => [
   ...state.filter((item) => item.id !== action.payload),
 ];
@@ -23,20 +27,10 @@ const onDeleteTask = (state, action) => [
 const onFilter = (state, action) => action.payload;
 
 const contactsReducer = createReducer([], {
-  // [addTaskSuccess]: onAddTask,
+  [addTaskSuccess]: onAddTask,
   [fetchTasksSuccess]: (state, action) => action.payload,
-  [removeTask]: onDeleteTask,
-  // [removeTasksSuccess]: onDeleteTask
+  [removeTasksSuccess]: onDeleteTask,
 });
-
-const loading = createReducer(false, {
-  [fetchTasksRequest]: () => true,
-  [addTaskRequest]: () => true,
-  [addTaskSuccess]: () => false,
-  [fetchTasksSuccess]: () => false,
-  [addTaskError]: () => false,
-  [fetchTasksError]: () => false
-})
 
 const filterReducer = createReducer("", {
   [setFilter]: onFilter,

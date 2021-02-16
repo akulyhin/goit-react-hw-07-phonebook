@@ -4,10 +4,9 @@ import { connect } from "react-redux";
 
 import styles from "./ContactList.module.css";
 import contactItem from "../Animation/contactItem.module.css";
-import { removeTask } from "../../redux/actions/todoActions";
+import { removeTask } from "../../redux/actions/contactsOperation";
 
-function Contacts({ contacts, removeTask,  }) {
-
+function Contacts({ contacts, removeTask }) {
   return (
     <>
       <h2>Contacts</h2>
@@ -34,7 +33,9 @@ function Contacts({ contacts, removeTask,  }) {
 const mapStateToProps = (state, ownProps) => {
   return {
     contacts: state.contacts.items.filter((item) =>
-      item.items.name.toLowerCase().includes(state.contacts.filter.toLowerCase())
+      item.items.name
+        .toLowerCase()
+        .includes(state.contacts.filter.toLowerCase())
     ),
   };
 };
