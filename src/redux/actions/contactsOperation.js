@@ -11,15 +11,14 @@ import {
 } from "./todoActions";
 import axios from "axios";
 
+axios.defaults.baseURL = "http://localhost:2000";
+
 const addTask = (items) => (dispatch) => {
   dispatch(addTaskRequest());
 
   axios
-    .post("http://localhost:2000/contacts", { items })
-    .then(({ data }) => {
-      console.log(data);
-      dispatch(addTaskSuccess(data));
-    })
+    .post("/contacts", { items })
+    .then(({ data }) => dispatch(addTaskSuccess(data)))
     .catch((error) => dispatch(addTaskError(error)));
 };
 
@@ -27,7 +26,7 @@ const fetchTasks = () => (dispatch) => {
   dispatch(fetchTasksRequest());
 
   axios
-    .get("http://localhost:2000/contacts")
+    .get("/contacts")
     .then(({ data }) => dispatch(fetchTasksSuccess(data)))
     .catch((error) => dispatch(fetchTasksError(error)));
 };
@@ -36,7 +35,7 @@ const removeTask = (id) => (dispatch) => {
   dispatch(removeTasksRequest());
 
   axios
-    .delete(`http://localhost:2000/contacts/${id}`)
+    .delete(`/contacts/${id}`)
     .then(() => dispatch(removeTasksSuccess(id)))
     .catch((error) => dispatch(removeTasksError(error)));
 };

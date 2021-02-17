@@ -12,11 +12,9 @@ const removeTasksRequest = createAction("tasks/removeRequest");
 const removeTasksSuccess = createAction("tasks/removeSuccess");
 const removeTasksError = createAction("tasks/removeError");
 
-const removeTask = createAction("tasks/remove");
 const setFilter = createAction("tasks/filter");
 
 export {
-  removeTask,
   setFilter,
   addTaskRequest,
   addTaskSuccess,

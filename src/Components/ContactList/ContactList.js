@@ -44,5 +44,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contacts);
-
-// const props = {contacts,removeTask}

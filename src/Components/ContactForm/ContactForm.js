@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./ContactForm.module.css";
 
 import { connect } from "react-redux";
-// import { addTask } from "../../redux/actions/todoActions";
 import { addTask } from "../../redux/actions/contactsOperation";
 import Alert from "../Alert/Alert";
 import { CSSTransition } from "react-transition-group";

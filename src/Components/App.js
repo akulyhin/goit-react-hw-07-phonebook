@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
@@ -7,19 +7,13 @@ import Filter from "./Filter/Filter";
 
 import styles from "./App.module.css";
 import logoAppear from "./Animation/LogoAppear.module.css";
-import Alert from "./Alert/Alert";
-import AlertAnimation from "./Animation/Alert.module.css";
-import {fetchTasks} from '../redux/actions/contactsOperation'
+import { fetchTasks } from "../redux/actions/contactsOperation";
 
 class App extends Component {
-
-
-
-componentDidMount() {
-  // fetch
-  this.props.onFetchContacts();
-}
-
+  componentDidMount() {
+    // fetch
+    this.props.onFetchContacts();
+  }
 
   render() {
     return (
@@ -35,20 +29,19 @@ componentDidMount() {
           <h1 className={styles.logo}>Phonebook</h1>
         </CSSTransition>
         <ContactForm />
-          <Filter />
-        <ContactList/>
+        <Filter />
+        <ContactList />
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   isLoading: state.contacts.loading,
-})
+});
 
 const mapDispatchToProps = {
-    onFetchContacts: fetchTasks
-}
-
+  onFetchContacts: fetchTasks,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

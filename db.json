@@ -1,3 +1,11 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "items": {
+        "name": "Artem Kulyhin",
+        "number": "549-11-64"
+      },
+      "id": 1
+    }
+  ]
 }
