@@ -6,6 +6,8 @@ import styles from "./ContactList.module.css";
 import contactItem from "../Animation/contactItem.module.css";
 import { removeTask } from "../../redux/actions/contactsOperation";
 
+import contactsSelectors from "../../redux/selectors/contactsSelectors";
+
 function Contacts({ contacts, removeTask }) {
   return (
     <>
@@ -30,15 +32,10 @@ function Contacts({ contacts, removeTask }) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    contacts: state.contacts.items.filter((item) =>
-      item.items.name
-        .toLowerCase()
-        .includes(state.contacts.filter.toLowerCase())
-    ),
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  contacts: contactsSelectors.getContactList(state),
+});
+
 const mapDispatchToProps = {
   removeTask,
 };

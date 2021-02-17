@@ -8,6 +8,7 @@ import Filter from "./Filter/Filter";
 import styles from "./App.module.css";
 import logoAppear from "./Animation/LogoAppear.module.css";
 import { fetchTasks } from "../redux/actions/contactsOperation";
+import contactsSelectors from "../redux/selectors/contactsSelectors";
 
 class App extends Component {
   componentDidMount() {
@@ -37,7 +38,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  isLoading: state.contacts.loading,
+  isLoading: contactsSelectors.getLoading(state),
 });
 
 const mapDispatchToProps = {

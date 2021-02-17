@@ -6,6 +6,7 @@ import { addTask } from "../../redux/actions/contactsOperation";
 import Alert from "../Alert/Alert";
 import { CSSTransition } from "react-transition-group";
 import AlertAnimation from "../Animation/Alert.module.css";
+import contactsSelectors from "../../redux/selectors/contactsSelectors";
 
 const initialState = {
   name: "",
@@ -77,7 +78,7 @@ const ContactForm = ({ contacts, addTask }) => {
   );
 };
 const mapStateToProps = (state, ownProps) => ({
-  contacts: state.contacts.items,
+  contacts: contactsSelectors.getForm(state),
 });
 
 export default connect(mapStateToProps, { addTask })(ContactForm);

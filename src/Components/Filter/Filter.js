@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Filter.module.css";
 import { connect } from "react-redux";
 import { setFilter } from "../../redux/actions/todoActions";
+import contactsSelectors from "../../redux/selectors/contactsSelectors";
 
 function Filter({ filter, setFilter }) {
   return (
@@ -18,7 +19,7 @@ function Filter({ filter, setFilter }) {
   );
 }
 const mapStateToProps = (state, ownProps) => ({
-  filter: state.contacts.filter,
+  filter: contactsSelectors.getFilter(state),
 });
 
 export default connect(mapStateToProps, { setFilter })(Filter);
