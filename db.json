@@ -2,17 +2,24 @@
   "contacts": [
     {
       "items": {
-        "name": "Artem Kulyhin",
-        "number": "549-11-64"
-      },
-      "id": 1
-    },
-    {
-      "items": {
         "name": "Test2",
         "number": "549-11-64"
       },
       "id": 2
+    },
+    {
+      "items": {
+        "name": "тест",
+        "number": "549-11-64"
+      },
+      "id": 4
+    },
+    {
+      "items": {
+        "name": "Artem Kulyhin",
+        "number": "549-11-64"
+      },
+      "id": 5
     }
   ]
 }
